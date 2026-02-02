@@ -178,3 +178,50 @@ This task covers:
 - Duplicate entries were addressed with aggregation when pivoting for correlation analysis.
 - Visualizations account for missing or `NaT` values to prevent plotting errors.
 
+# Task 3: Event Impact Modeling
+
+## Objective
+Model how national events (policies, product launches, and infrastructure investments)
+affect financial inclusion indicators in Ethiopia.
+
+This task links major events to Access and Usage indicators and translates qualitative
+impact assessments into a quantitative event–indicator impact model.
+
+---
+
+## Contents
+- `notebooks/task_3_event_impact_modeling.ipynb`  
+  Jupyter notebook implementing the event impact model and association matrix.
+
+---
+
+## Approach
+1. Loaded the `Impact_sheet` and joined it with event records using `parent_id`.
+2. Identified which events affect which financial inclusion indicators.
+3. Converted qualitative impact magnitudes (high, medium, low) into estimated
+   percentage-point effects.
+4. Built an event–indicator association matrix summarizing the estimated impact
+   of each event on each indicator.
+5. Validated model outputs against historical data where available
+   (e.g., Telebirr launch and mobile money adoption).
+
+---
+
+## Modeling Assumptions
+- Event impacts occur after a short lag and persist over time.
+- Impacts from multiple events affecting the same indicator are additive.
+- Where Ethiopian pre/post data is limited, estimates are informed by comparable
+  country evidence.
+- The model is associative and intended for scenario analysis, not causal inference.
+
+---
+
+## Outputs
+- Event–indicator association matrix (table and heatmap)
+- Estimated impact sizes for key financial inclusion indicators
+- Sanity check against historical mobile money adoption data
+
+---
+
+## Status
+Analysis complete. Documentation may be refined in later iterations.
