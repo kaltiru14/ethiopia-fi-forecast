@@ -225,3 +225,104 @@ impact assessments into a quantitative event–indicator impact model.
 
 ## Status
 Analysis complete. Documentation may be refined in later iterations.
+
+Task 4: Forecasting Account Ownership and Digital Payment Usage (2025–2027)
+===========================================================================
+
+Objective
+---------
+
+Forecast **Account Ownership (Access)** and **Digital Payment Usage** for Ethiopia over 2025–2027 using trend analysis and scenario modeling.
+
+Data
+----
+
+*   Source: ethiopia\_fi\_unified\_data\_enriched.xlsx (Ethiopia financial inclusion dataset)
+    
+*   Indicators used:
+    
+    *   **Access:** ACC\_OWNERSHIP (% of adults with an account at a financial institution or mobile money)
+        
+    *   **Usage:** Digital payment proxies (including mobile money usage indicators)
+        
+*   Historical data is sparse (5 points for Findex over 13 years for access; usage is proxy-based)
+    
+
+Approach
+--------
+
+1.  **Trend Regression**
+    
+    *   Linear regression fitted on historical year vs value\_numeric data for each indicator.
+        
+    *   Projected baseline values for 2025–2027.
+        
+2.  **Scenario Analysis**
+    
+    *   **Pessimistic:** small decrease in adoption/usage
+        
+    *   **Base:** trend continuation
+        
+    *   **Optimistic:** accelerated adoption/usage
+        
+    *   Scenario adjustments applied to baseline values.
+        
+3.  **Forecast Table**
+    
+    *   Includes baseline projections and scenario ranges for each indicator.
+        
+4.  **Visualization**
+    
+    *   Line plots for Access and Usage under each scenario.
+        
+
+Forecast Table (Baseline and Scenario Ranges)
+---------------------------------------------
+
+| Year | Access Baseline (%) | Access Min | Access Max | Usage Baseline (proxy) | Usage Min  | Usage Max  |
+|------|-------------------|------------|------------|----------------------|------------|------------|
+| 2025 | 58.62             | 57.12      | 60.62      | 4.45e+11             | 3.78e+11   | 5.12e+11   |
+| 2026 | 61.83             | 60.33      | 63.83      | 8.90e+11             | 7.57e+11   | 1.02e+12   |
+| 2027 | 65.05             | 63.55      | 67.05      | 1.33e+12             | 1.13e+12   | 1.53e+12   |
+
+
+> **Note:** Usage values are proxy-based; ranges reflect ±15% due to data sparsity.
+
+Interpretation
+--------------
+
+*   **Access (Account Ownership)** is projected to increase steadily from ~58.6% (2025) to ~65.1% (2027).
+    
+*   **Digital Payment Usage** shows rapid growth, consistent with expansion of mobile money and fintech adoption.
+    
+*   **Key Influencers:**
+    
+    *   Mobile money platforms (e.g., Telebirr)
+        
+    *   Policy initiatives for digital financial services
+        
+    *   Telecom and infrastructure developments
+        
+*   **Uncertainty:**
+    
+    *   Sparse historical data for trend fitting
+        
+    *   Proxy indicators for digital payment usage
+        
+    *   Scenario ranges provide indicative bounds; confidence intervals were not calculated.
+        
+
+Files in Task 4
+---------------
+
+*   task4\_forecasting.ipynb → Notebook containing:
+    
+    *   Data preparation
+        
+    *   Trend fitting
+        
+    *   Baseline and scenario forecasts
+        
+    *   Plots and interpretation
+        
+*   README.md → This documentation
