@@ -296,19 +296,15 @@ Interpretation
 *   **Digital Payment Usage** shows rapid growth, consistent with expansion of mobile money and fintech adoption.
     
 *   **Key Influencers:**
-    
+ 
     *   Mobile money platforms (e.g., Telebirr)
-        
     *   Policy initiatives for digital financial services
-        
     *   Telecom and infrastructure developments
         
 *   **Uncertainty:**
     
     *   Sparse historical data for trend fitting
-        
-    *   Proxy indicators for digital payment usage
-        
+    *   Proxy indicators for digital payment usage  
     *   Scenario ranges provide indicative bounds; confidence intervals were not calculated.
         
 
@@ -318,11 +314,119 @@ Files in Task 4
 *   task4\_forecasting.ipynb → Notebook containing:
     
     *   Data preparation
-        
     *   Trend fitting
-        
     *   Baseline and scenario forecasts
-        
     *   Plots and interpretation
         
 *   README.md → This documentation
+
+# Task 5 – Financial Inclusion Dashboard & Forecasting (Ethiopia)
+
+## Overview
+This task delivers an **interactive Streamlit dashboard** that visualizes trends and short-term forecasts for **financial inclusion in Ethiopia**.  
+The dashboard integrates cleaned survey indicators and transaction-based proxy data to support **exploratory analysis, scenario forecasting, and policy-relevant insights**.
+
+The focus is on:
+- Account ownership trends
+- Usage proxies for digital payments
+- Simple, explainable forecasts with scenario ranges (no confidence intervals)
+
+---
+
+## Objectives
+- Build an interactive dashboard using **Streamlit**
+- Present key financial inclusion indicators clearly
+- Forecast account ownership for **2025–2027**
+- Communicate uncertainty using **scenario ranges**
+- Document assumptions and limitations transparently
+
+---
+
+## Data Sources
+- **Primary dataset**:  
+  `ethiopia_fi_unified_data_enriched.xlsx`
+
+- **Key indicators used**
+  - Account ownership (% of adults)
+  - Digital payment usage (proxy indicators only)
+  - P2P and ATM transaction counts
+
+> ⚠ Survey-based digital usage percentages are not consistently available.  
+> Transaction-based indicators are therefore used as **proxies**, not direct adoption rates.
+
+---
+
+## Dashboard Structure
+
+### 1. Overview
+- Latest account ownership value
+- Digital payment usage availability check
+- P2P / ATM transaction crossover ratio
+- High-level insights and trends
+
+### 2. Trends
+- Interactive time-series visualization
+- User-controlled year range slider
+- Focus on account ownership growth over time
+
+### 3. Forecasts (2025–2027)
+- Linear trend model based on historical account ownership
+- Scenario-based projections:
+  - **Pessimistic**
+  - **Base**
+  - **Optimistic**
+- Forecast results displayed as:
+  - Table
+  - Line chart
+
+> ⚠ Scenario ranges are used; confidence intervals (CI) are intentionally excluded.
+
+### 4. Inclusion Projections
+- Comparison of forecast scenarios against a **60% inclusion target**
+- Visual assessment of progress under different assumptions
+- Discussion of uncertainties, impacts, and limitations
+
+---
+
+## Forecasting Methodology
+- **Model**: Linear Regression
+- **Target variable**: Account Ownership (%)
+- **Forecast horizon**: 3 years (2025–2027)
+
+### Scenario Design
+| Scenario      | Adjustment |
+|---------------|------------|
+| Pessimistic   | −1.5 pp    |
+| Base          | 0.0 pp     |
+| Optimistic    | +2.0 pp    |
+
+This approach prioritizes **interpretability and transparency** over complexity.
+
+---
+
+## Error Handling & Data Validation
+The dashboard includes:
+- Safe data loading with fallback handling
+- Empty dataset checks
+- Minimum data requirements for forecasting
+- Graceful warnings when data is unavailable
+
+Example:
+- Digital payment usage shows **“Data unavailable”** when no survey-based percentage exists.
+
+---
+
+## Limitations
+- Linear trend assumption may oversimplify real-world dynamics
+- Digital payment usage measured via proxy indicators
+- Sparse historical survey data
+- No causal inference
+- ⚠ Channel comparison is minimal (but not mandatory) due to inconsistent indicator coverage
+
+---
+
+## How to Run the Dashboard
+
+```bash
+cd dashboard
+streamlit run app.py
